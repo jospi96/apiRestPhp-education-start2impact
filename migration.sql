@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 13, 2023 alle 15:58
+-- Creato il: Mar 13, 2023 alle 16:51
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.2.0
 
@@ -20,15 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `education`
 --
-
--- --------------------------------------------------------
-
---
--- Struttura stand-in per le viste `cosi_with_materie`
--- (Vedi sotto per la vista effettiva)
---
-CREATE TABLE `cosi_with_materie` (
-);
 
 -- --------------------------------------------------------
 
@@ -175,7 +166,9 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 (141, 'tedesco', 0),
 (142, 'tedesco', 0),
 (143, 'tedesco', 3),
-(144, 'corso di lingue', 3);
+(145, 'corso di lingue', 3),
+(146, 'corso die lingue', 3),
+(147, 'corso die lingue', 3);
 
 -- --------------------------------------------------------
 
@@ -316,9 +309,15 @@ INSERT INTO `courses_subjects` (`id_corso`, `id_materia`) VALUES
 (66, 5),
 (76, 4),
 (136, 5),
-(144, 4),
-(144, 5),
-(144, 6);
+(145, 4),
+(145, 5),
+(145, 6),
+(146, 4),
+(146, 5),
+(146, 6),
+(147, 4),
+(147, 5),
+(147, 6);
 
 -- --------------------------------------------------------
 
@@ -342,15 +341,6 @@ INSERT INTO `subjects` (`id`, `name_materia`) VALUES
 (5, 'spagnolo'),
 (6, 'rumeno'),
 (10, 'tedesco');
-
--- --------------------------------------------------------
-
---
--- Struttura per vista `cosi_with_materie`
---
-DROP TABLE IF EXISTS `cosi_with_materie`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cosi_with_materie`  AS SELECT `corsi`.`id` AS `id`, `corsi`.`name` AS `name`, `corsi`.`posti_disponibili` AS `posti_disponibili`, group_concat(distinct `materia`.`name_materia` separator ',') AS `Materie` FROM ((`corsi` left join `materie_corsi` on(`corsi`.`id` = `materie_corsi`.`id_corso`)) left join `materia` on(`materie_corsi`.`id_materia` = `materia`.`id`)) GROUP BY `corsi`.`id``id`  ;
 
 --
 -- Indici per le tabelle scaricate
@@ -384,7 +374,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT per la tabella `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT per la tabella `subjects`

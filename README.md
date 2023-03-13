@@ -11,6 +11,20 @@ type=name&&text=rt
 ### To filter by subject
 type=materia&&text=dd
 
+## json format accepted
+### Course create
+[{"id":144, "name":"corso di lingue","posti_disponibili":3,"subjects":[4,5]}]
+### Course update
+[{"id":144, "name":"corso di lingue","posti_disponibili":3,"subjects":[4,5]}]
+### Course delete
+[{"id":144}]
+### Subject create
+[{"name":"italiano"}]
+### Subject modify
+[{"id":1, "name":"italiano"}]
+### Subject delete
+[{"id":1, }]
+
 ## Technologies
 Project created with:
 * Php

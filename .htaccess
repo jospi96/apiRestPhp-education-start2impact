@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^(.*)$ index.php [L,QSA]
+#RewriteRule ^([^/]*)(.*)$ index.php?first=$1&second=$2
+
