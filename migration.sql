@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 13, 2023 alle 16:51
+-- Creato il: Mar 15, 2023 alle 17:39
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.2.0
 
@@ -30,15 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `posti_disponibili` int(11) NOT NULL
+  `places_available` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `courses`
 --
 
-INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
-(1, 'dlfg', 2),
+INSERT INTO `courses` (`id`, `name`, `places_available`) VALUES
 (2, 'dlfg', 2),
 (11, 'dlfg', 2),
 (13, 'dlfg', 2),
@@ -59,7 +58,7 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 (31, 'dlfg', 2),
 (32, 'dlfg', 2),
 (33, 'dlfg', 2),
-(34, 'dlfg', 2),
+(34, 'corsod die lingue', 3),
 (35, 'dlfg', 2),
 (36, 'dlfg', 2),
 (37, 'dlfg', 2),
@@ -110,7 +109,7 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 (85, 'dlfg', 2),
 (86, 'dlfg', 2),
 (87, 'dlfg', 2),
-(88, 'dlfg', 2),
+(88, 'corsod die lingue', 3),
 (89, 'dlfg', 2),
 (90, 'dlfg', 2),
 (91, 'dlfg', 2),
@@ -156,9 +155,7 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 (131, 'dlfg', 2),
 (132, 'dlfg', 2),
 (133, 'dlfg', 2),
-(134, 'dlfg', 2),
-(135, 'dlfg', 2),
-(136, 'rumeno', 6),
+(134, 'corsod die lingue', 3),
 (137, 'tedesco', 0),
 (138, 'tedesco', 0),
 (139, 'tedesco', 0),
@@ -168,7 +165,32 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 (143, 'tedesco', 3),
 (145, 'corso di lingue', 3),
 (146, 'corso die lingue', 3),
-(147, 'corso die lingue', 3);
+(147, 'corso die lingue', 3),
+(148, 'corsod die lingue', 3),
+(149, 'corsod die lingue', 3),
+(150, 'corsod die lingue', 3),
+(151, 'corsod die lingue', 3),
+(152, 'corsod die lingue', 3),
+(153, 'corsod die lingue', 3),
+(154, 'corsod die lingue', 3),
+(155, 'corsod die lingue', 3),
+(156, 'corsod die lingue', 3),
+(157, 'corsod die lingue', 3),
+(158, 'corsod die lingue', 3),
+(159, 'corsod die lingue', 3),
+(160, 'corsod die lingue', 3),
+(161, 'corsod die lingue', 3),
+(162, 'corsod die lingue', 3),
+(163, 'corsod die lingue', 3),
+(164, 'corsod die lingue', 3),
+(165, 'corsod die lingue', 3),
+(166, 'corsod die lingue', 3),
+(167, 'corsod die lingue', 3),
+(168, 'corsod die lingue', 3),
+(169, 'corsod die lingue', 3),
+(170, 'corsod die lingue', 3),
+(171, 'corsod die lingue', 3),
+(172, 'corsod die lingue', 3);
 
 -- --------------------------------------------------------
 
@@ -177,138 +199,74 @@ INSERT INTO `courses` (`id`, `name`, `posti_disponibili`) VALUES
 --
 
 CREATE TABLE `courses_subjects` (
-  `id_corso` int(11) NOT NULL,
-  `id_materia` int(11) NOT NULL
+  `id_course` int(11) NOT NULL,
+  `id_subject` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `courses_subjects`
 --
 
-INSERT INTO `courses_subjects` (`id_corso`, `id_materia`) VALUES
-(1, 1),
-(2, 2),
-(2, 2),
+INSERT INTO `courses_subjects` (`id_course`, `id_subject`) VALUES
 (71, 1),
-(71, 2),
 (72, 1),
-(72, 2),
 (73, 1),
-(73, 2),
 (74, 1),
-(74, 2),
 (75, 1),
-(75, 2),
 (78, 1),
-(78, 2),
 (79, 1),
-(79, 2),
 (80, 1),
-(80, 2),
 (81, 1),
-(81, 2),
 (82, 1),
-(82, 2),
 (83, 1),
-(83, 2),
 (84, 1),
-(84, 2),
 (90, 1),
-(90, 2),
 (91, 1),
-(91, 2),
 (92, 1),
-(92, 2),
 (93, 1),
-(93, 2),
 (94, 1),
-(94, 2),
 (95, 1),
-(95, 2),
 (96, 1),
-(96, 2),
 (97, 1),
-(97, 2),
 (98, 1),
-(98, 2),
 (99, 1),
-(99, 2),
 (100, 1),
-(100, 2),
 (101, 1),
-(101, 2),
 (102, 1),
-(102, 2),
 (103, 1),
-(103, 2),
 (104, 1),
-(104, 2),
 (105, 1),
-(105, 2),
 (106, 1),
-(106, 2),
 (107, 1),
-(107, 2),
 (108, 1),
-(108, 2),
 (109, 1),
-(109, 2),
 (110, 1),
-(110, 2),
 (111, 1),
-(111, 2),
 (112, 1),
-(112, 2),
 (113, 1),
-(113, 2),
 (114, 1),
-(114, 2),
 (115, 1),
-(115, 2),
 (116, 1),
-(116, 2),
 (117, 1),
-(117, 2),
 (118, 1),
-(118, 2),
 (119, 1),
-(119, 2),
 (120, 1),
-(120, 2),
 (121, 1),
-(121, 2),
 (122, 1),
-(122, 2),
 (123, 1),
-(123, 2),
 (124, 1),
-(124, 2),
 (125, 1),
-(125, 2),
 (126, 1),
-(126, 2),
 (127, 1),
-(127, 2),
 (128, 1),
-(128, 2),
 (129, 1),
-(129, 2),
 (130, 1),
-(130, 2),
 (131, 1),
-(131, 2),
 (132, 1),
-(132, 2),
 (133, 1),
-(133, 2),
-(134, 1),
-(134, 2),
-(135, 1),
-(135, 2),
 (77, 5),
 (66, 5),
 (76, 4),
-(136, 5),
 (145, 4),
 (145, 5),
 (145, 6),
@@ -317,7 +275,30 @@ INSERT INTO `courses_subjects` (`id_corso`, `id_materia`) VALUES
 (146, 6),
 (147, 4),
 (147, 5),
-(147, 6);
+(147, 6),
+(169, 4),
+(170, 4),
+(171, 4),
+(172, 4),
+(172, 5),
+(172, 6),
+(134, 4),
+(134, 5),
+(134, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `courses_with_subjects`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `courses_with_subjects` (
+`id` int(11)
+,`name` varchar(50)
+,`places_available` int(11)
+,`subjects_name` mediumtext
+,`subjects_id` mediumtext
+);
 
 -- --------------------------------------------------------
 
@@ -327,20 +308,30 @@ INSERT INTO `courses_subjects` (`id_corso`, `id_materia`) VALUES
 
 CREATE TABLE `subjects` (
   `id` int(11) NOT NULL,
-  `name_materia` varchar(25) NOT NULL
+  `name_subject` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `subjects`
 --
 
-INSERT INTO `subjects` (`id`, `name_materia`) VALUES
+INSERT INTO `subjects` (`id`, `name_subject`) VALUES
 (1, 'italiano'),
-(2, 'inglese'),
 (4, 'spagnolo'),
 (5, 'spagnolo'),
 (6, 'rumeno'),
-(10, 'tedesco');
+(11, 'corso di inglese'),
+(12, 'corso di inglese'),
+(13, 'corso di inglese');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per vista `courses_with_subjects`
+--
+DROP TABLE IF EXISTS `courses_with_subjects`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `courses_with_subjects`  AS SELECT `courses`.`id` AS `id`, `courses`.`name` AS `name`, `courses`.`places_available` AS `places_available`, group_concat(distinct `subjects`.`name_subject` separator ',') AS `subjects_name`, group_concat(distinct `courses_subjects`.`id_subject` separator ',') AS `subjects_id` FROM ((`courses` left join `courses_subjects` on(`courses`.`id` = `courses_subjects`.`id_course`)) left join `subjects` on(`courses_subjects`.`id_subject` = `subjects`.`id`)) GROUP BY `courses`.`id``id`  ;
 
 --
 -- Indici per le tabelle scaricate
@@ -356,9 +347,9 @@ ALTER TABLE `courses`
 -- Indici per le tabelle `courses_subjects`
 --
 ALTER TABLE `courses_subjects`
-  ADD KEY `id_corso` (`id_corso`),
-  ADD KEY `id_corso_2` (`id_corso`),
-  ADD KEY `id_materia` (`id_materia`);
+  ADD KEY `id_corso` (`id_course`),
+  ADD KEY `id_corso_2` (`id_course`),
+  ADD KEY `id_materia` (`id_subject`);
 
 --
 -- Indici per le tabelle `subjects`
@@ -374,13 +365,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT per la tabella `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT per la tabella `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Limiti per le tabelle scaricate
@@ -390,8 +381,8 @@ ALTER TABLE `subjects`
 -- Limiti per la tabella `courses_subjects`
 --
 ALTER TABLE `courses_subjects`
-  ADD CONSTRAINT `courses_subjects_ibfk_1` FOREIGN KEY (`id_corso`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `courses_subjects_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `subjects` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `courses_subjects_ibfk_1` FOREIGN KEY (`id_course`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `courses_subjects_ibfk_2` FOREIGN KEY (`id_subject`) REFERENCES `subjects` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
