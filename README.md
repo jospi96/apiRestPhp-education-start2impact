@@ -9,7 +9,7 @@ type=places_available&&text=34
 ### To filter by name
 type=name&&text=rt
 ### To filter by subject
-type=materia&&text=dd
+type=subjects&&text=dd
 
 ## json format accepted
 ### Course create
