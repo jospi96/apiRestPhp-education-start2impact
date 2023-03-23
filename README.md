@@ -1,4 +1,4 @@
-# Angular2
+# Php api
 
 This is my first porject in Php and SQL language. It is part of my stauding path in start2impact university.This project consisted in creating api rest that would allow you to create, modify, delete and view courses and related subjects.
 ## Development 
@@ -9,7 +9,7 @@ type=places_available&&text=34
 ### To filter by name
 type=name&&text=rt
 ### To filter by subject
-type=subjects&&text=dd
+type=subjects_id&&text=1
 
 ## json format accepted
 ### Course create
