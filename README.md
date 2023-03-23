@@ -6,6 +6,7 @@ this project consists of an index that redirects the various users to the reques
 at the address course it is possible to set parameters to filter the query.
 ### To filter by number of seats
 type[places_available]=gm%2
+
 You can choose the comparison operator among these:
 
 * =% ->'='  equals
