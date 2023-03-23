@@ -6,14 +6,8 @@ class Course
     public function get_course()
     {
 
-        if (
-            isset($_GET['type']['name'])
-            or isset($_GET['type']['places_available'])
-            or isset($_GET['type']['subjects_id'])
-        ) {
-
             $course = App::get('database')
-                ->get_all_filters_course(
+                ->get_course(
                     'courses_with_subjects',
 
                     isset($_GET['type']['name']) ?
@@ -26,19 +20,14 @@ class Course
                     $_GET['type']['subjects_id'] : null
                 );
 
-        } else {
-
-            $course = App::get('database')
-                ->get_course('courses_with_subjects');
-
-        }
+    
         if (!empty($course)) {
             $response = new response('200', $course);
             return $response;
 
         }
 
-        $response = new response('204', $course);
+        $response = new response('400', $course);
         return $response;
 
     }
@@ -125,7 +114,7 @@ class Course
                 $response = new response('204', []);
                 return $response;
             }
-            $response = new response('500', []);
+            $response = new response('404', []);
             return $response;
 
         }
@@ -163,7 +152,7 @@ class Course
             );
 
             if (!$query) {
-                $response = new response('500', []);
+                $response = new response('404', []);
                 return $response;
             }
             $fetch_sub = App::get('database')
