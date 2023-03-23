@@ -5,11 +5,16 @@ This is my first porject in Php and SQL language. It is part of my stauding path
 this project consists of an index that redirects the various users to the requests made, accepts only 2 ulr course and subject. 
 at the address course it is possible to set parameters to filter the query.
 ### To filter by number of seats
-type=places_available&&text=34 
+type[places_available]=2
 ### To filter by name
-type=name&&text=rt
+type[name]=dl
 ### To filter by subject
-type=subjects_id&&text=1
+type[subjects_id]=1%4  
+You can filter on multiple categories.
+
+You can combine the filters
+
+
 
 ## json format accepted
 ### Course create
