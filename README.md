@@ -5,7 +5,17 @@ This is my first porject in Php and SQL language. It is part of my stauding path
 this project consists of an index that redirects the various users to the requests made, accepts only 2 ulr course and subject. 
 at the address course it is possible to set parameters to filter the query.
 ### To filter by number of seats
-type[places_available]=2
+type[places_available]=gm%2
+You can choose the comparison operator among these:
+
+* =% ->'='  equals
+* gt% -> '>' greater 
+* lt% ->'<' less 
+* gte% ->'>=' greater equals
+* lte% -> '<='less equals
+
+
+
 ### To filter by name
 type[name]=dl
 ### To filter by subject
