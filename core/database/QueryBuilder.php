@@ -9,24 +9,27 @@ class QueryBuilder
         $this->pdo = $pdo;
     }
 
-    public function get_all_filters_course(
+    public function get_course(
         $table, $name, $place, $subjects
     ) {
         $linkName = '';
         $linkSubjects = '';
         $linkPlace = '';
+        $where = "";
         /** paramater check */
         if ($name != '') {
             $colum = 'name';
-            $linkName .= "{$colum} like '%{$name}%'";
-
+            $linkName .= " {$colum} like '%{$name}%'";
+            $where = " where ";
             if ($place != null || $subjects != null) {
                 $linkPlace .= ' AND';
             }
         }
         if ($place != null) {
             $colum = 'places_available';
-            $linkPlace .= " {$colum}={$place}";
+            $place = explode('%', $place);
+            $linkPlace .= " {$colum}{$this->operator($place[0])}{$place[1]}";
+            $where = " where ";
             if ($subjects != null) {
                 $linkSubjects .= ' AND';
             }
@@ -36,7 +39,7 @@ class QueryBuilder
             $colum = 'subjects_id';
             $subjects = explode('%', $subjects);
             $linkSubjects .= " {$colum}={$subjects[0]}";
-
+            $where = " where ";
             foreach ($subjects as $key => $value) {
 
                 if ($key > 0) {
@@ -47,10 +50,9 @@ class QueryBuilder
             }
         }
 
-        $query = sprintf("SELECT * FROM %s  where %s %s %s  ",
-            $table, $linkName, $linkPlace, $linkSubjects
+        $query = sprintf("SELECT * FROM %s %s %s %s  ",
+            $table, $where, $linkName, $linkPlace, $linkSubjects
         );
-
         try {
             $stmt = $this->pdo->prepare($query);
 
@@ -60,26 +62,9 @@ class QueryBuilder
                 return $stmt->fetchAll();
             }
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
+            return false;
         }
 
-    }
-
-    public function get_course($table)
-    {
-        $query = "SELECT * FROM  {$table}";
-
-        try {
-            $stmt = $this->pdo->prepare($query);
-
-            // execute query
-            if ($stmt->execute()) {
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                return $stmt->fetchAll();
-            }
-        } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
     }
 
     public function create_course($table, $data)
@@ -99,7 +84,7 @@ class QueryBuilder
             ];
             return $excution;
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
+            return false;
         }
 
     }
@@ -113,18 +98,14 @@ class QueryBuilder
             implode(', ', array_keys($data)),
             ':' . implode(', :', array_keys($data))
         );
-        echo $query;
+
         try {
             $stmt = $this->pdo->prepare($query);
-
-            $a = $stmt->execute($data);
+            $stmt->execute($data);
+            return true;
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
-        return true;
 
     }
 
@@ -138,15 +119,11 @@ class QueryBuilder
         );
         try {
             $stmt = $this->pdo->prepare($query);
-
-            $a = $stmt->execute($data);
+            $stmt->execute($data);
+            return true;
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
-        return true;
 
     }
 
@@ -166,17 +143,12 @@ class QueryBuilder
         );
         try {
             $stmt = $this->pdo->prepare($query);
-            $a = $stmt->execute($data);
+            $stmt->execute($data);
+            return true;
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
-        return true;
-
     }
-
     public function get_subjects_course($table, $data, $column)
     {
         $query = sprintf(
@@ -190,11 +162,9 @@ class QueryBuilder
             $stmt = $this->pdo->prepare($query);
             $a = $stmt->execute($data);
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
+
         return $stmt;
 
     }
@@ -215,11 +185,9 @@ class QueryBuilder
             $stmt = $this->pdo->prepare($query);
             $a = $stmt->execute($data);
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
+
         return true;
     }
 
@@ -238,7 +206,7 @@ class QueryBuilder
 
             return $stmt->fetchAll();
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
+            return false;
         }
     }
 
@@ -253,14 +221,12 @@ class QueryBuilder
         try {
             $stmt = $this->pdo->prepare($query);
             $a = $stmt->execute($data);
-            if (!$a) {
-                return false;
-            } else {
-                return true;
-            }
+
+            return true;
+
         } catch (Exception $e) {
 
-            die($e . 'Whoops, something went wrong');
+            return false;
         }
 
     }
@@ -278,16 +244,32 @@ class QueryBuilder
         );
         try {
             $stmt = $this->pdo->prepare($query);
-            $a = $stmt->execute($data);
+            $stmt->execute($data);
+            return true;
         } catch (Exception $e) {
-            die($e . 'Whoops, something went wrong');
-        }
-        if (!$a) {
             return false;
         }
-        return true;
 
     }
+    public function operator($op)
+    {
+        switch ($op) {
+            case '=':return '=';
+            case 'gt':
+                return '>';
 
+            case 'lt':
+                return '<';
+
+            case 'gte':
+                return '>=';
+
+            case 'lte':
+                return '<=';
+            default:return "=";
+
+        }
+
+    }
 }
 ?>
