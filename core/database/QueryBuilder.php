@@ -131,8 +131,7 @@ class QueryBuilder
     {
 
         $query = sprintf(
-            "UPDATE %s  set %s=%s ,
-                        %s=%s where  %s=%s",
+            "UPDATE %s  set %s=%s , %s=%s where  %s=%s",
             $table,
             array_keys($data)[1],
             ':' . array_keys($data)[1],
@@ -173,8 +172,7 @@ class QueryBuilder
     {
 
         $query = sprintf(
-            "Delete from %s
-					where   %s= %s and   %s= %s",
+            "Delete from %s where   %s= %s and   %s= %s",
             $table,
             array_keys($data)[1],
             ':' . array_keys($data)[1],
@@ -254,19 +252,21 @@ class QueryBuilder
     public function operator($op)
     {
         switch ($op) {
-            case '=':return '=';
+            case '=':
+			return '=';
             case 'gt':
-                return '>';
+			return '>';
 
             case 'lt':
-                return '<';
+			return '<';
 
             case 'gte':
-                return '>=';
+			return '>=';
 
             case 'lte':
-                return '<=';
-            default:return "=";
+			return '<=';
+            default:
+			return "=";
 
         }
 
