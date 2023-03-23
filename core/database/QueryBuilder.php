@@ -253,23 +253,21 @@ class QueryBuilder
     {
         switch ($op) {
             case '=':
-			return '=';
+                return '=';
             case 'gt':
-			return '>';
+                return '>';
 
             case 'lt':
-			return '<';
+                return '<';
 
             case 'gte':
-			return '>=';
+                return '>=';
 
             case 'lte':
-			return '<=';
+                return '<=';
             default:
-			return "=";
+		return "=";
 
         }
-
-    }
 }
 ?>
